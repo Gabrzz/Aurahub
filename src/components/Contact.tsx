@@ -40,7 +40,7 @@ const Contact = () => {
   };
 
   const whatsappMessage = "Olá! Gostaria de saber mais sobre as soluções de automação inteligente da Aura.";
-  const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/5534984263844?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <section id="contact" className="py-20 relative">

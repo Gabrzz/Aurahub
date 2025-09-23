@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-import auraLogo from "@/assets/aura-logo.png";
+import auraLogo from "@/assets/aura-logo2.png";
 
 const Hero = () => {
   return (
@@ -30,7 +30,7 @@ const Hero = () => {
         </div>
 
         {/* Main headline */}
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
           <span className="gradient-text">Automação inteligente</span>
           <br />
           <span className="text-foreground">para simplificar</span>
@@ -39,7 +39,7 @@ const Hero = () => {
         </h1>
 
         {/* Subheadline */}
-        <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
           Transformamos rotinas complexas em automações inteligentes que aumentam sua produtividade e reduzem custos operacionais
         </p>
 
@@ -66,11 +66,16 @@ const Hero = () => {
         </div>
 
         {/* Scroll indicator */}
+
+        {/* ----------------- mouse -----------------
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
             <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
+        */}
+
+
       </div>
     </section>
   );

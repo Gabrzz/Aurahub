@@ -22,7 +22,7 @@ const Footer = () => {
           {/* Social links */}
           <div className="flex gap-4 mb-8">
             <a 
-              href="https://wa.me/5511999999999" 
+              href="https://wa.me/5534984263844" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
@@ -30,13 +30,13 @@ const Footer = () => {
               <MessageSquare className="h-5 w-5" />
             </a>
             <a 
-              href="mailto:contato@aura.ai" 
+              href="mailto:aurabr.business@gmail.com" 
               className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
             >
               <Mail className="h-5 w-5" />
             </a>
             <a 
-              href="https://linkedin.com/company/aura-ai" 
+              href="#" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
