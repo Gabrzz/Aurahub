@@ -171,7 +171,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
                 <Button 
                   type="submit" 
-                  className="btn-hero w-full text-lg py-3 h-auto group"
+                  className="btn-hero w-full md:text-lg lg:text-lg py-3 h-auto group"
                 >
                   <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   Solicitar demonstração gratuita
