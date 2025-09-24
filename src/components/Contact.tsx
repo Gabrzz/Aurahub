@@ -14,23 +14,36 @@ const Contact = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Simulate form submission
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // Enviar dados para uma API
+  try {
+    await fetch("https://n8n.aurabs.com.br/contato-site", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
     toast({
       title: "Mensagem enviada com sucesso!",
       description: "Nossa equipe entrará em contato em até 24 horas.",
     });
 
-    // Reset form
     setFormData({
       name: "",
       email: "",
       company: "",
       message: ""
     });
-  };
+  } catch (error) {
+    toast({
+      title: "Erro ao enviar mensagem",
+      description: "Tente novamente mais tarde.",
+    });
+  }
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
