@@ -19,7 +19,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   // Enviar dados para uma API
   try {
-    await fetch("https://n8n.aurabs.com.br/contato-site", {
+    await fetch("https://n8n.aurabs.com.br/webhook/contato-site", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
