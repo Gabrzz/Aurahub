@@ -1,4 +1,5 @@
 import { Clock, TrendingUp, Shield, Users } from "lucide-react";
+import CountUp from "@/components/ui/countup";
 
 const Benefits = () => {
   const benefits = [
@@ -6,28 +7,32 @@ const Benefits = () => {
       icon: Clock,
       title: "Economia de Tempo",
       description: "Automatize tarefas repetitivas e libere sua equipe para atividades estratégicas que geram mais valor",
-      stat: "até 80%",
+      stat: "80",
+      statSuffix: "%",
       statLabel: "redução no tempo de execução"
     },
     {
       icon: TrendingUp,
       title: "Aumento de ROI",
       description: "Maximize seus resultados com processos otimizados que trabalham 24/7 sem interrupção",
-      stat: "300%+",
+      stat: "300",
+      statSuffix: "%+",
       statLabel: "aumento médio em produtividade"
     },
     {
       icon: Shield,
       title: "Segurança e Governança",
       description: "Proteja seus dados com as mais altas certificações de segurança e compliance",
-      stat: "100%",
+      stat: "100",
+      statSuffix: "%",
       statLabel: "conformidade com LGPD"
     },
     {
       icon: Users,
       title: "Colaboração Eficiente",
       description: "Integramos áreas técnicas e de negócio para resultados alinhados aos seus objetivos",
-      stat: "90%+",
+      stat: "90",
+      statSuffix: "%+",
       statLabel: "satisfação dos clientes"
     }
   ];
@@ -73,12 +78,14 @@ const Benefits = () => {
                   {/* Stat */}
                   <div className="border-t border-border pt-4">
                     <div className="text-2xl font-bold gradient-text">
-                      {benefit.stat}
+                      <CountUp to={Number(benefit.stat)} separator="." />
+                      {benefit.statSuffix}
                     </div>
                     <div className="text-sm text-muted-foreground">
                       {benefit.statLabel}
                     </div>
                   </div>
+                  
                 </div>
               </div>
             </div>

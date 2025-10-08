@@ -36,7 +36,7 @@ const Footer = () => {
               <Mail className="h-5 w-5" />
             </a>
             <a 
-              href="#" 
+              href="https://linkedin.com/company/aurabs" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"

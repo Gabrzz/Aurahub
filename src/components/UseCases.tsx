@@ -25,7 +25,7 @@ const UseCases = () => {
     {
       icon: MessageSquare,
       title: "Atendimento 24/7",
-      description: "Chatbots inteligentes que resolvem 80% das demandas automaticamente"
+      description: "Chatbots inteligentes que resolvem 90% das demandas automaticamente"
     },
     {
       icon: FileText,

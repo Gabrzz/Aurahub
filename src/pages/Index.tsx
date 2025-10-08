@@ -8,6 +8,7 @@ import Differentials from "@/components/Differentials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import ScrollVelocity from "@/components/ScrollVelocity";
 
 const Index = () => {
   useScrollAnimation();
@@ -33,6 +34,7 @@ const Index = () => {
       <UseCases />
       <Differentials />
       <Contact />
+      <ScrollVelocity />
       <Footer />
     </div>
   );

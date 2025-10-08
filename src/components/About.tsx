@@ -5,17 +5,17 @@ const About = () => {
     {
       icon: Brain,
       title: "Diagnóstico de Processos",
-      description: "Analisamos suas rotinas e identificamos oportunidades de automação com IA avançada"
+      description: "Identificamos seu potencial de crescimento e lucro, usando IA para resolver desafios de ponta a ponta"
     },
     {
       icon: Zap,
       title: "Criação de Agentes",
-      description: "Desenvolvemos agentes inteligentes personalizados para suas necessidades específicas"
+      description: "Soluções inteligentes e completas, integrando o essencial para gerar mais resultados de forma coesa"
     },
     {
       icon: Target,
       title: "Integrações Inteligentes",
-      description: "Conectamos seus sistemas existentes de forma harmoniosa e eficiente"
+      description: "Integramos e organizamos sistemas para simplificar o acompanhamento e maximizar a performance"
     },
     {
       icon: Shield,
@@ -33,7 +33,7 @@ const About = () => {
             <span className="gradient-text">O que fazemos</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Transformamos rotinas em automações inteligentes que trabalham 24/7 para o seu negócio
+            Transformamos rotinas em fluxos inteligentes que funcionam 24/7, usando IA para otimizar seu negócio
           </p>
         </div>
 

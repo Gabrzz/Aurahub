@@ -1,10 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import auraLogo from "@/assets/aura-logo2.png";
+import Aurora from '@/components/ui/bg';
+import TextType from '@/components/ui/typeText';
+
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+     
+     {/* Aurora Background */}
+      <div className="absolute inset-0">
+        <Aurora
+          blend={0.5}
+          amplitude={1.0}
+          speed={0.5}
+        />
+      </div>
+    
+      
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="hero-glow absolute top-1/4 left-1/4 w-96 h-96 rounded-full"></div>
@@ -20,27 +34,58 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
-        {/* Logo */}
-        <div className="mb-12 flex justify-center">
-          <img 
-            src={auraLogo} 
-            alt="Aura - Agência de Inteligência Artificial" 
-            className="h-24 w-auto drop-shadow-2xl animate-pulse"
-          />
-        </div>
+
+
+      {/* Logo */}
+      <div className="mb-8 flex justify-center">
+        <img 
+          src={auraLogo} 
+          alt="Aura - Agência de Inteligência Artificial" 
+          className="h-32 w-auto drop-shadow-2xl animate-pulse"
+        />
+      </div>
+
 
         {/* Main headline */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-          <span className="gradient-text">Automação inteligente</span>
-          <br />
-          <span className="text-foreground">para simplificar</span>
-          <br />
-          <span className="text-foreground">o seu negócio</span>
+          <span className="gradient-text">Inteligência Artificial</span>
+          <span className="text-foreground"><br />para 
+            <TextType 
+              text={[' simplificar', ' transformar', ' melhorar', ' Automatizar', ' Potencializar', ' Acelerar']}
+              typingSpeed={70}
+              pauseDuration={3000}
+              showCursor={false}
+              cursorCharacter="|"
+            />
+          </span>
+          <span className="text-foreground"><br />o seu negócio</span>
         </h1>
+
+          {/*
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <span className="gradient-text">Inteligência Artificial</span>
+            <BlurText
+              text="para simplificar"
+              delay={150}
+              animateBy="words"
+              direction="top"
+              onAnimationComplete={handleAnimationComplete}
+              className="text-foreground"
+              />
+            <BlurText
+              text="o seu negócio"
+              delay={150}
+              animateBy="words"
+              direction="top"
+              onAnimationComplete={handleAnimationComplete}
+              className="text-foreground"
+              />
+          </h1>
+          */}
 
         {/* Subheadline */}
         <p className="text-xl md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-          Transformamos rotinas complexas em automações inteligentes que aumentam sua produtividade e reduzem custos operacionais
+          Esqueça automações isoladas. Aqui, você encontra infraestrutura completa de IA, pensada para gerar resultados reais e recorrentes.
         </p>
 
         {/* CTA Buttons */}

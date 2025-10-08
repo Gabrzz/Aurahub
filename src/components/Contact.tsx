@@ -131,7 +131,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="bg-background border-border focus:border-primary"
+                      className="bg-background border-border focus:border-primary w-full"
                     />
                   </div>
                   <div>

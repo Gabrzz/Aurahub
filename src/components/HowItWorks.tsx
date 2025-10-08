@@ -6,7 +6,7 @@ const HowItWorks = () => {
       icon: Search,
       number: "01",
       title: "Diagnóstico",
-      description: "Analisamos seus processos atuais e identificamos as melhores oportunidades de automação para maximizar seu ROI"
+      description: "Analisamos seus processos atuais e identificamos as melhores oportunidades de implementar IA para maximizar seu lucro e minimizar o tempo gasto"
     },
     {
       icon: Code,
@@ -18,7 +18,7 @@ const HowItWorks = () => {
       icon: Rocket,
       number: "03",
       title: "Implantação e Acompanhamento",
-      description: "Implementamos as automações e oferecemos suporte contínuo para garantir resultados excepcionais"
+      description: "Implementamos as ferramentas e oferecemos suporte contínuo para garantir resultados excepcionais"
     }
   ];
 
