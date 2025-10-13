@@ -51,7 +51,7 @@ const Hero = () => {
           <span className="gradient-text">Inteligência Artificial</span>
           <span className="text-foreground"><br />para 
             <TextType 
-              text={[' simplificar', ' transformar', ' melhorar', ' Automatizar', ' Potencializar', ' Acelerar']}
+              text={[' simplificar', ' transformar', ' melhorar', ' automatizar', ' potencializar', ' acelerar']}
               typingSpeed={70}
               pauseDuration={3000}
               showCursor={false}
