@@ -1,0 +1,307 @@
+/* components/ui/Cases.module.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400&display=swap');
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: .4; transform: scale(1); }
+  50%       { opacity: 1;  transform: scale(1.3); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes shimmer-text {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+@keyframes card-glow {
+  0%, 100% { opacity: .4; }
+  50%       { opacity: .9; }
+}
+
+/* ─── Section ───────────────────────────────────────── */
+
+.section {
+  position: relative;
+  padding: 120px 0 140px;
+  overflow: hidden;
+}
+
+.auroraCanvas {
+  position: absolute;
+  inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; opacity: .85;
+}
+
+.grain {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: .5;
+}
+
+.container {
+  position: relative; z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ─── Header ────────────────────────────────────────── */
+
+.header {
+  display: flex; flex-direction: column; align-items: flex-start;
+  margin-bottom: 56px;
+  animation: fade-up .8s ease both;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 100px; padding: 7px 18px; margin-bottom: 24px;
+}
+.dots { display: flex; gap: 5px; align-items: center; }
+.dot  { width: 6px; height: 6px; border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+.dot:nth-child(1) { background: #a855f7; animation-delay: 0s; }
+.dot:nth-child(2) { background: #ec4899; animation-delay: .3s; }
+.dot:nth-child(3) { background: #f97316; animation-delay: .6s; }
+
+.eyebrowText {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: rgba(255,255,255,.42); letter-spacing: .1em; text-transform: uppercase;
+}
+
+.title {
+  font-family: 'Goldman', sans-serif; font-weight: 700;
+  font-size: clamp(28px, 4vw, 56px);
+  color: #fff; line-height: 1.1; letter-spacing: -.01em; margin-bottom: 18px;
+}
+.titleAccent {
+  display: block;
+  background: linear-gradient(110deg, #a855f7, #ec4899, #f97316, #fbbf24);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-text 5s linear infinite;
+}
+.subtitle {
+  font-family: 'DM Sans', sans-serif; font-weight: 300;
+  font-size: 17px; color: rgba(255,255,255,.38);
+  line-height: 1.7; max-width: 520px;
+}
+
+/* ─── Marquee ───────────────────────────────────────── */
+
+.marqueeWrap {
+  position: relative; overflow: hidden; margin-bottom: 64px;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+.marqueeTrack {
+  display: flex; gap: 0; width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.marqueeItem {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 44px; border-right: 1px solid rgba(255,255,255,.07);
+  height: 60px; flex-shrink: 0;
+}
+.marqueeLabel {
+  font-family: 'Goldman', sans-serif; font-weight: 400;
+  font-size: 13px; letter-spacing: .06em;
+  color: rgba(255,255,255,.2); white-space: nowrap;
+  user-select: none; transition: color .3s; text-transform: uppercase;
+}
+.marqueeItem:hover .marqueeLabel { color: rgba(255,255,255,.5); }
+
+/* ─── Grid
+     Layout:
+       [ BIG — col 1, rows 1+2 ] [ SM1 — col 2, row 1 ]
+                                  [ SM2 — col 2, row 2 ]
+       [ WIDE ——————————— col 1+2, row 3 ]
+─────────────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr auto;
+  gap: 16px;
+  align-items: stretch;
+}
+@media (max-width: 768px) { 
+  .grid { 
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto;
+  } 
+}
+
+/* ─── Cards ─────────────────────────────────────────── */
+
+.card {
+  position: relative; border-radius: 20px; overflow: hidden;
+  background: rgba(10,10,20,.75); backdrop-filter: blur(24px);
+  cursor: default; transition: transform .35s ease, box-shadow .35s ease;
+}
+.card:hover { transform: translateY(-3px); }
+
+.cardBig {
+  grid-column: 1; grid-row: 1 / 3;
+  border: 1px solid rgba(168,85,247,.22);
+  animation: fade-up .7s ease .1s both;
+}
+.cardBig:hover { box-shadow: 0 0 40px rgba(168,85,247,.12); }
+
+.cardSm1 {
+  grid-column: 2; grid-row: 1;
+  border: 1px solid rgba(249,115,22,.2);
+  animation: fade-up .7s ease .22s both;
+}
+.cardSm1:hover { box-shadow: 0 0 32px rgba(249,115,22,.1); }
+
+.cardSm2 {
+  grid-column: 2; grid-row: 2;
+  border: 1px solid rgba(236,72,153,.2);
+  animation: fade-up .7s ease .34s both;
+}
+.cardSm2:hover { box-shadow: 0 0 32px rgba(236,72,153,.1); }
+
+.cardWide {
+  grid-column: 1 / 3; grid-row: 3;
+  border: 1px solid rgba(6,182,212,.2);
+  display: flex; align-items: center;
+  animation: fade-up .7s ease .46s both;
+}
+.cardWide:hover { box-shadow: 0 0 40px rgba(6,182,212,.1); }
+@media (max-width: 768px) {
+  .cardBig,.cardSm1,.cardSm2 { grid-column: 1; grid-row: auto; }
+  .cardWide { grid-column: 1; flex-direction: column; }
+}
+
+/* Ambient glow per card */
+.cardBig::before {
+  content: ''; position: absolute; inset: 0; border-radius: 20px; z-index: 0;
+  background: radial-gradient(ellipse at 15% 15%, rgba(168,85,247,.12), transparent 55%);
+  pointer-events: none; animation: card-glow 5s ease-in-out infinite;
+}
+.cardSm1::before {
+  content: ''; position: absolute; inset: 0; border-radius: 20px; z-index: 0;
+  background: radial-gradient(ellipse at 85% 10%, rgba(249,115,22,.1), transparent 55%);
+  pointer-events: none;
+}
+.cardSm2::before {
+  content: ''; position: absolute; inset: 0; border-radius: 20px; z-index: 0;
+  background: radial-gradient(ellipse at 85% 90%, rgba(236,72,153,.1), transparent 55%);
+  pointer-events: none;
+}
+
+/* ─── Inner padding variants ────────────────────────── */
+
+.innerBig  { position: relative; z-index: 1; padding: 40px 40px 38px; height: 100%; display: flex; flex-direction: column; }
+.innerSm   { position: relative; z-index: 1; padding: 28px 30px; height: 100%; display: flex; flex-direction: column; }
+.innerWide { position: relative; z-index: 1; padding: 32px 40px; flex: 1; }
+.wideLogo  {
+  position: relative; z-index: 1;
+  padding: 32px 48px; min-width: 220px;
+  border-left: 1px solid rgba(255,255,255,.07);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .wideLogo { border-left: none; border-top: 1px solid rgba(255,255,255,.07); width: 100%; min-width: unset; }
+}
+
+/* ─── Card typography ───────────────────────────────── */
+
+.coLogo {
+  font-family: 'Goldman', sans-serif; font-weight: 700;
+  font-size: 26px; letter-spacing: .01em;
+  display: inline-block; margin-bottom: 16px;
+}
+.coLogoSm {
+  font-family: 'Goldman', sans-serif; font-weight: 700;
+  font-size: 18px; letter-spacing: .01em;
+  display: inline-block; margin-bottom: 14px;
+}
+.coLogoWide {
+  font-family: 'Goldman', sans-serif; font-weight: 700;
+  font-size: 20px; letter-spacing: .01em;
+  display: inline-block; color: rgba(255,255,255,.6);
+}
+
+/* Tag pill */
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  border-radius: 100px; padding: 4px 12px; margin-bottom: 16px;
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: .08em; text-transform: uppercase;
+  flex-shrink: 0; width: fit-content;
+}
+.tagPurple { background: rgba(168,85,247,.15); border: 1px solid rgba(168,85,247,.3); color: #c084fc; }
+.tagOrange { background: rgba(249,115,22,.15);  border: 1px solid rgba(249,115,22,.3);  color: #fb923c; }
+.tagPink   { background: rgba(236,72,153,.15);  border: 1px solid rgba(236,72,153,.3);  color: #f472b6; }
+.tagCyan   { background: rgba(6,182,212,.15);   border: 1px solid rgba(6,182,212,.3);   color: #22d3ee; }
+
+.tagDot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.tagDotPurple { background: #a855f7; box-shadow: 0 0 5px #a855f7; }
+.tagDotOrange { background: #f97316; box-shadow: 0 0 5px #f97316; }
+.tagDotPink   { background: #ec4899; box-shadow: 0 0 5px #ec4899; }
+.tagDotCyan   { background: #06b6d4; box-shadow: 0 0 5px #06b6d4; }
+
+/* Stats */
+.statRow { display: flex; gap: 28px; margin-bottom: 20px; flex-wrap: wrap; }
+.stat    { display: flex; flex-direction: column; gap: 4px; }
+.statNum    { font-family: 'Goldman', sans-serif; font-weight: 700; font-size: 32px; color: #fff; line-height: 1; }
+.statNumSm  { font-family: 'Goldman', sans-serif; font-weight: 700; font-size: 26px; color: #fff; line-height: 1; }
+.statLabel  {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: rgba(255,255,255,.32); letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.divider { height: 1px; background: linear-gradient(90deg, rgba(255,255,255,.1), transparent); margin: 20px 0; }
+
+.cardTitle   { font-family: 'Goldman', sans-serif; font-weight: 700; font-size: 16px; color: #fff; line-height: 1.45; margin-bottom: 10px; }
+.cardTitleSm { font-family: 'Goldman', sans-serif; font-weight: 700; font-size: 14px; color: #fff; line-height: 1.45; margin-bottom: 8px; }
+.cardDesc    {
+  font-family: 'DM Sans', sans-serif; font-weight: 300;
+  font-size: 14px; color: rgba(255,255,255,.38); line-height: 1.75;
+  flex: 1;
+}
+.cardDescWide {
+  font-family: 'DM Sans', sans-serif; font-weight: 300;
+  font-size: 14px; color: rgba(255,255,255,.38); line-height: 1.75;
+  max-width: 560px;
+}
+
+/* Match badge */
+.match {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-top: 24px; flex-shrink: 0; width: fit-content;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px; padding: 9px 14px;
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: rgba(255,255,255,.4); letter-spacing: .04em;
+}
+
+/* ─── CTA ───────────────────────────────────────────── */
+
+.cta { margin-top: 56px; text-align: center; }
+.ctaLine {
+  font-family: 'DM Sans', sans-serif; font-weight: 300;
+  font-size: 16px; color: rgba(255,255,255,.32); margin-bottom: 28px;
+}
+.ctaLine strong { color: #fff; font-weight: 500; }
+.ctaBtn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #a855f7, #ec4899, #f97316);
+  padding: 15px 36px; border-radius: 100px;
+  font-family: 'Goldman', sans-serif; font-weight: 700; font-size: 14px;
+  color: #fff; border: none; cursor: pointer; letter-spacing: .02em;
+  transition: opacity .2s, transform .2s;
+}
+.ctaBtn:hover { opacity: .87; transform: scale(1.03); }

@@ -1,74 +1,59 @@
-import { Search, Code, Rocket } from "lucide-react";
+// components/HowItWorks.tsx
+"use client";
+
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { VideoCard }               from "@/components/ui/VideoCard.tsx";
+import { videos }                  from "@/components/ui/howitworks.data";
+import styles                      from "@/components/ui/HowItWorks.module.css";
 
 const HowItWorks = () => {
-  const steps = [
-    {
-      icon: Search,
-      number: "01",
-      title: "Diagnóstico",
-      description: "Analisamos seus processos atuais e identificamos as melhores oportunidades de implementar IA para maximizar seu lucro e minimizar o tempo gasto"
-    },
-    {
-      icon: Code,
-      number: "02", 
-      title: "Desenvolvimento Rápido",
-      description: "Criamos soluções personalizadas usando as mais avançadas tecnologias de IA, sempre priorizando segurança e eficiência"
-    },
-    {
-      icon: Rocket,
-      number: "03",
-      title: "Implantação e Acompanhamento",
-      description: "Implementamos as ferramentas e oferecemos suporte contínuo para garantir resultados excepcionais"
-    }
-  ];
+  const { ref: headerRef, visible: headerVisible } = useIntersectionObserver(0.2);
+  const { ref: gridRef,   visible: gridVisible   } = useIntersectionObserver(0.05);
 
   return (
-    <section className="py-20 relative">
-      <div className="container mx-auto px-6">
-        {/* Section header */}
-        <div className="text-center mb-16 fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="gradient-text">Como funciona</span>
+    <section id="how-it-works" className={styles.section}>
+
+      {/* Background */}
+      <div className={`${styles.orb} ${styles.orb1}`} />
+      <div className={`${styles.orb} ${styles.orb2}`} />
+
+      <div className={styles.container}>
+
+        {/* Header */}
+        <div
+          ref={headerRef}
+          className={styles.header}
+          style={{
+            opacity:    headerVisible ? 1 : 0,
+            transform:  headerVisible ? "translateY(0)" : "translateY(30px)",
+            transition: "opacity 0.8s ease, transform 0.8s ease",
+          }}
+        >
+          <div className={styles.eyebrow}>
+            <div className={styles.dots}>
+              <div className={styles.dot} />
+              <div className={styles.dot} />
+              <div className={styles.dot} />
+            </div>
+            <span className={styles.eyebrowText}>Como funciona isso?</span>
+          </div>
+
+          <h2 className={styles.title}>
+            Veja <span className={styles.titleGrad}>na prática</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Um processo simples e transparente para transformar seu negócio em apenas 3 passos
+
+          <p className={styles.subtitle}>
+            Não é mágica. É processo. Mas o resultado parece mágico.
           </p>
         </div>
 
-        {/* Steps */}
-        <div className="max-w-6xl mx-auto">
-          {steps.map((step, index) => (
-            <div 
-              key={index}
-              className={`flex flex-col lg:flex-row items-center gap-12 mb-20 last:mb-0 fade-in-up ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
-              style={{ animationDelay: `${index * 0.3}s` }}
-            >
-              {/* Step content */}
-              <div className="flex-1 text-center lg:text-left">
-                <div className="mb-4">
-                  <span className="text-6xl font-bold gradient-text">
-                    {step.number}
-                  </span>
-                </div>
-                <h3 className="text-3xl font-bold mb-6 text-foreground">
-                  {step.title}
-                </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-
-              {/* Step icon */}
-              <div className="flex-shrink-0">
-                <div className="w-32 h-32 bg-gradient-primary rounded-3xl flex items-center justify-center shadow-elegant">
-                  <step.icon className="h-16 w-16 text-white" />
-                </div>
-              </div>
-            </div>
+        {/* 2-col video grid */}
+        <div ref={gridRef} className={styles.grid}>
+          {videos.map((item, index) => (
+            <VideoCard key={item.id} item={item} index={index} visible={gridVisible} />
           ))}
         </div>
+
       </div>
     </section>
   );

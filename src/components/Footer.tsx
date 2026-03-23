@@ -49,7 +49,6 @@ const Footer = () => {
           <div className="border-t border-border pt-6 w-full">
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Aura. Todos os direitos reservados. 
-              Feito com 💜 para revolucionar seu negócio.
             </p>
           </div>
         </div>

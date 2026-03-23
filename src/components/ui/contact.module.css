@@ -1,0 +1,248 @@
+/* components/ui/Contact.module.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap');
+
+/* ─── Keyframes ──────────────────────────────────────── */
+@keyframes fade-up   { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes shimmer   { 0%{background-position:200% center} 100%{background-position:-200% center} }
+@keyframes pulse-dot { 0%,100%{opacity:.4;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
+@keyframes float-orb { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
+@keyframes morph     { 0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%} 50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%} }
+@keyframes beam-move { 0%{transform:translateX(-100%) rotate(35deg)} 100%{transform:translateX(300%) rotate(35deg)} }
+@keyframes tick-in   { from{opacity:0;transform:translateX(-12px)} to{opacity:1;transform:translateX(0)} }
+@keyframes btn-shine { 0%{left:-60%} 100%{left:130%} }
+@keyframes wapp-pop  { 0%{transform:scale(.8);opacity:0} 100%{transform:scale(1);opacity:1} }
+@keyframes wapp-pulse{ 0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.4)} 50%{box-shadow:0 0 0 14px rgba(37,211,102,0)} }
+
+/* ─── Section ────────────────────────────────────────── */
+.section {
+  position: relative;
+  padding: 120px 0 100px;
+  overflow: hidden;
+}
+
+/* ─── Background ─────────────────────────────────────── */
+.bgBase {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(124,58,237,.22)  0%, transparent 60%),
+    radial-gradient(ellipse  60% 50% at 10%  30%, rgba(236,72,153,.14)  0%, transparent 55%),
+    radial-gradient(ellipse  50% 60% at 90%  20%, rgba(249,115,22,.12)  0%, transparent 55%);
+  background-color: #05050a;
+}
+
+.blob { position: absolute; pointer-events: none; filter: blur(72px); opacity: .45; }
+.blob1 {
+  width: 550px; height: 550px; bottom: -180px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  animation: morph 14s ease-in-out infinite, float-orb 10s ease-in-out infinite;
+}
+.blob2 {
+  width: 320px; height: 320px; top: 5%; left: -60px;
+  background: linear-gradient(135deg, #a855f7, #3b82f6); opacity: .3;
+  animation: morph 18s ease-in-out infinite reverse;
+}
+.blob3 {
+  width: 280px; height: 280px; top: 10%; right: -40px;
+  background: linear-gradient(135deg, #f97316, #fbbf24); opacity: .28;
+  animation: morph 12s ease-in-out infinite 3s;
+}
+
+.beam {
+  position: absolute; top: 0; left: 0; width: 200px; height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.03), transparent);
+  pointer-events: none; z-index: 1;
+}
+.beam1 { animation: beam-move 8s linear infinite; }
+.beam2 { animation: beam-move 12s linear 4s infinite; }
+
+.gridDots {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 75%);
+}
+
+.noise {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── Layout ─────────────────────────────────────────── */
+.container {
+  position: relative; z-index: 3;
+  max-width: 1100px; margin: 0 auto; padding: 0 40px;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 780px) { .inner { grid-template-columns: 1fr; gap: 56px; } }
+
+/* ─── Left — copy ────────────────────────────────────── */
+.copy { animation: fade-up .8s ease both; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 100px; padding: 7px 18px; margin-bottom: 28px;
+  backdrop-filter: blur(10px);
+}
+.dots { display: flex; gap: 5px; }
+.dot  { width: 6px; height: 6px; border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+.dot:nth-child(1) { background: #a855f7; }
+.dot:nth-child(2) { background: #ec4899; animation-delay: .3s; }
+.dot:nth-child(3) { background: #f97316; animation-delay: .6s; }
+.eyebrowText { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,.45); letter-spacing: .1em; text-transform: uppercase; }
+
+.title {
+  font-family: 'Goldman', sans-serif; font-weight: 700;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.05; letter-spacing: -.01em;
+  color: #fff; margin-bottom: 20px;
+  text-shadow: 0 0 60px rgba(168,85,247,.3);
+}
+.titleGrad {
+  display: block;
+  background: linear-gradient(110deg, #fff 0%, #e879f9 40%, #f97316 80%, #fbbf24 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+.desc {
+  font-family: 'DM Sans', sans-serif; font-weight: 300;
+  font-size: 17px; color: rgba(255,255,255,.45);
+  line-height: 1.75; margin-bottom: 40px; max-width: 420px;
+}
+
+/* Trust list */
+.trust { display: flex; flex-direction: column; gap: 12px; margin-bottom: 44px; }
+
+.trustItem {
+  display: flex; align-items: center; gap: 12px;
+  animation: tick-in .6s ease both;
+}
+.trustItem:nth-child(1) { animation-delay: .2s; }
+.trustItem:nth-child(2) { animation-delay: .35s; }
+.trustItem:nth-child(3) { animation-delay: .5s; }
+
+.check { width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.ckPu  { background: rgba(168,85,247,.2); border: 1px solid rgba(168,85,247,.4); }
+.ckPk  { background: rgba(236,72,153,.2); border: 1px solid rgba(236,72,153,.4); }
+.ckOr  { background: rgba(249,115,22,.2); border: 1px solid rgba(249,115,22,.4); }
+
+.trustText { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 15px; color: rgba(255,255,255,.65); }
+.trustText strong { color: #fff; font-weight: 500; }
+
+/* WhatsApp link */
+.wappLink {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(37,211,102,.12); border: 1px solid rgba(37,211,102,.3);
+  border-radius: 100px; padding: 11px 22px;
+  font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px;
+  color: #25d366; text-decoration: none;
+  transition: background .25s, border-color .25s, transform .25s;
+}
+.wappLink:hover { background: rgba(37,211,102,.2); border-color: rgba(37,211,102,.5); transform: translateY(-2px); }
+.wappDot { width: 8px; height: 8px; border-radius: 50%; background: #25d366; box-shadow: 0 0 8px #25d366; animation: pulse-dot 2s ease-in-out infinite; }
+
+/* ─── Right — form card ──────────────────────────────── */
+.card {
+  position: relative;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 24px; padding: 44px 40px;
+  backdrop-filter: blur(24px); overflow: hidden;
+  animation: fade-up .8s ease .15s both;
+}
+.card::before {
+  content: ''; position: absolute; inset: 0; border-radius: 24px; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(168,85,247,.12), transparent 60%);
+}
+.card::after {
+  content: ''; position: absolute; top: 0; left: 10%; width: 80%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(168,85,247,.6), rgba(236,72,153,.6), transparent);
+}
+
+.cardTitle { font-family: 'Goldman', sans-serif; font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 6px; text-align: center; }
+.cardSub   { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(255,255,255,.35); text-align: center; margin-bottom: 32px; }
+
+/* Form */
+.row   { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.field { margin-bottom: 12px; }
+@media (max-width: 500px) { .row { grid-template-columns: 1fr; } }
+
+.inp {
+  width: 100%; background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1); border-radius: 12px;
+  padding: 13px 16px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: #fff; outline: none;
+  transition: border-color .25s, background .25s;
+}
+.inp::placeholder { color: rgba(255,255,255,.28); }
+.inp:focus { border-color: rgba(168,85,247,.6); background: rgba(168,85,247,.07); }
+
+.optWrap  { position: relative; }
+.optTag   {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  color: rgba(255,255,255,.25); letter-spacing: .06em; text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* Submit button */
+.submit {
+  position: relative; overflow: hidden;
+  width: 100%; margin-top: 20px; padding: 16px;
+  border-radius: 100px; border: none; cursor: pointer;
+  background: linear-gradient(135deg, #7c3aed, #ec4899, #f97316);
+  font-family: 'Goldman', sans-serif; font-weight: 700; font-size: 14px;
+  color: #fff; letter-spacing: .04em;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: opacity .2s, transform .2s;
+}
+.submit:hover { opacity: .9; transform: scale(1.015); }
+
+.submitShine {
+  position: absolute; top: -50%; width: 40px; height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  transform: skewX(-20deg);
+  animation: btn-shine 3.5s ease-in-out infinite 1s;
+}
+
+/* Pills */
+.pills { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 18px; flex-wrap: wrap; }
+.pill  { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(255,255,255,.3); letter-spacing: .06em; display: flex; align-items: center; gap: 5px; }
+.pillDot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.2); }
+
+/* Success state */
+.successWrap {
+  display: none; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; gap: 16px; padding: 24px 0;
+}
+.successWrap.visible { display: flex; animation: fade-up .6s ease both; }
+.successIcon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  display: flex; align-items: center; justify-content: center;
+  animation: wapp-pop .5s ease both;
+}
+.successTitle { font-family: 'Goldman', sans-serif; font-weight: 700; font-size: 20px; color: #fff; }
+.successSub   { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 14px; color: rgba(255,255,255,.45); max-width: 280px; }
+
+/* ─── WhatsApp FAB ───────────────────────────────────── */
+.wappFab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25d366;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  animation: wapp-pop .6s ease 1s both, wapp-pulse 2.5s ease-in-out 2s infinite;
+  transition: transform .2s, background .2s;
+}
+.wappFab:hover { transform: scale(1.1); background: #1da851; }

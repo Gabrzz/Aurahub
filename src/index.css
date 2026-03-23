@@ -212,3 +212,30 @@ All colors MUST be HSL.
     background-position: 100% 50%;
   }
 }
+
+
+/* JO-CSS Personalizado */
+
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Electrolize&family=Goldman:wght@400;700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+.jofont-1{
+    font-family: 'Goldman', sans-serif;
+    color: #fff;
+    font-weight: 800;
+  }
+.jofont-2{
+  font-family: 'Quantico', sans-serif;
+  color: #fff;
+  font-weight: 800;
+}
+.jofont-3{
+  font-family: 'Electrolize', sans-serif;
+  color: #fff;
+  font-weight: 800;
+}
+.jofont-4{
+    font-family: "DotGothic16", sans-serif;
+    color: #fff;
+    font-weight: 800;
+  }

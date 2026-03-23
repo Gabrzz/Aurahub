@@ -1,10 +1,10 @@
 import { useEffect } from "react";
+import Nav from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import HowItWorks from "@/components/HowItWorks";
-import Benefits from "@/components/Benefits";
-import UseCases from "@/components/UseCases";
-import Differentials from "@/components/Differentials";
+import Benefits from "@/components/AboutAura";
+import UseCases from "@/components/Cases";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -16,7 +16,7 @@ const Index = () => {
   useEffect(() => {
     // Add Google Fonts
     const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap';
+    link.href = 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
 
@@ -27,14 +27,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Nav />
       <Hero />
       <About />
       <HowItWorks />
-      <Benefits />
+      {/* <ScrollVelocity /> */}
       <UseCases />
-      <Differentials />
+      <Benefits />
       <Contact />
-      <ScrollVelocity />
       <Footer />
     </div>
   );
