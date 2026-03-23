@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Electrolize&family=Goldman:wght@400;700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -215,9 +216,6 @@ All colors MUST be HSL.
 
 
 /* JO-CSS Personalizado */
-
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Electrolize&family=Goldman:wght@400;700&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
 
 .jofont-1{
     font-family: 'Goldman', sans-serif;

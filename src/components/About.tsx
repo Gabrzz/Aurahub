@@ -6,7 +6,7 @@ import { ArrowRight, Sparkles }    from "lucide-react";
 import { ProblemCard }             from "@/components/ui/ProblemCard";
 import { problems }                from '@/components/ui/about-data';
 import { Button }                  from "@/components/ui/button";
-import styles                      from '@/components/ui/About.module.css';
+import styles                      from '@/components/ui/about.module.css';
 
 
 const About = () => {
