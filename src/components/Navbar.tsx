@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import auraLogo from "@/assets/aura-logo2.png";
 import { Button } from "@/components/ui/button";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Detectar scroll para mudar o estilo do navbar
   useEffect(() => {
@@ -27,6 +30,18 @@ const Navbar = () => {
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
+
+    // Se o usuário não estiver na página inicial, navega para a página inicial
+    if (location.pathname !== "/") {
+      if (href === "#") {
+        navigate("/");
+        window.scrollTo(0, 0);
+      } else {
+        navigate("/" + href);
+      }
+      return;
+    }
+
     if (href === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {

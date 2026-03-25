@@ -10,9 +10,25 @@ import Footer from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import ScrollVelocity from "@/components/ScrollVelocity";
 import ChatBot from "@/components/ChatBot";
+import { useLocation } from "react-router-dom";
 
 const Index = () => {
   useScrollAnimation();
+  const location = useLocation();
+
+  // Tratamento de rolagem caso o usuário navegue para essa tela usando a hash
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else if (location.pathname === "/") {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
   useEffect(() => {
     // Add Google Fonts

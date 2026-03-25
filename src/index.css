@@ -241,37 +241,36 @@ All colors MUST be HSL.
 /* ---- Custom Dynamic Scrollbar ---- */
 /* Firefox compatibility */
 html {
-  scrollbar-width: auto;
-  scrollbar-color: #F16928 transparent;
+  scrollbar-width: thin;
+  scrollbar-color: #F16928 #0a0a0a;
   scroll-behavior: smooth;
 }
 
 /* Chrome, Edge, and Safari Webkit Scrollbar */
+
+/* Espessura horizontal o mais curta possível */
 ::-webkit-scrollbar {
-  width: 14px; /* Largura total da barra de rolagem */
+  width: 5px; 
+  height: 5px; /* Para barras horizontais caso existam */
 }
 
+/* Fundo da barra escuro para se misturar com o site */
 ::-webkit-scrollbar-track {
-  background: transparent; /* Trilha transparente conforme solicitado */
+  background: #0a0a0a; 
 }
 
+/* Thumb laranja */
 ::-webkit-scrollbar-thumb {
-  /* Degradê dinâmico: Roxo/Lilás (#9D62D9) no topo e Laranja (#F16928) no final */
-  background-image: linear-gradient(to bottom, #9D62D9, #F16928);
-  
-  /* O background-attachment fixed é o segredo para o degradê interagir com o scroll; 
-     o degradê fica ancorado na tela inteira, então o thumb revela diferentes partes dele conforme se move */
-  background-attachment: fixed; 
-  
-  border-radius: 9999px; /* Formato de pílula arredondado */
-  
-  /* Usa borda transparente e padding-box para simular uma margem entre o thumb e a trilha, 
-     deixando o controle mais fino e elegante */
-  border: 4px solid transparent; 
-  background-clip: padding-box;
+  background: #F16928;
+  border-radius: 10px; 
 }
 
+/* Laranja mais vívido no hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-image: linear-gradient(to bottom, #a973e6, #f27c44);
-  background-attachment: fixed;
+  background: #ff7a33; 
+}
+
+/* Remove completamente as setinhas do inicio e do final */
+::-webkit-scrollbar-button {
+  display: none;
 }
