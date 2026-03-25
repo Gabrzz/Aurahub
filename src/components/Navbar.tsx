@@ -45,7 +45,7 @@ const Navbar = () => {
           className={`pointer-events-auto transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)] flex items-center justify-between mx-auto overflow-hidden ${
             isScrolled
               ? "w-full max-w-[4000px] rounded-none bg-black/5 backdrop-blur-[64px] border-b border-white/5 px-6 py-4"
-              : "w-full max-w-[680px] rounded-full bg-white/5 backdrop-blur-2xl border border-white/10 px-8 py-3 shadow-[0_8px_32px_rgba(168,85,247,0.15)]"
+              : "w-full max-w-[520px] rounded-full bg-white/5 backdrop-blur-2xl border border-white/10 px-4 py-2 shadow-[0_8px_32px_rgba(168,85,247,0.15)]"
           }`}
         >
           <div className={`flex items-center justify-between transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)] w-full ${isScrolled ? "container mx-auto" : "gap-4"}`}>
@@ -54,7 +54,7 @@ const Navbar = () => {
               className="flex items-center gap-3 cursor-pointer group shrink-0"
               onClick={() => handleNavClick("#")}
             >
-              <div className={`relative transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)] ${isScrolled ? "w-10 h-10" : "w-12 h-12"}`}>
+              <div className={`relative transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)] ${isScrolled ? "w-10 h-10" : "w-10 h-10 ml-2"}`}>
                 <img
                   src={auraLogo}
                   alt="Aura Logo"
@@ -74,7 +74,7 @@ const Navbar = () => {
                     className={`relative text-sm font-medium transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)] group flex items-center justify-center whitespace-nowrap overflow-hidden ${
                       hiddenInCapsule 
                         ? "max-w-0 opacity-0 px-0 mx-0 pointer-events-none" 
-                        : "max-w-[120px] opacity-100 px-4 mx-1 text-neutral-300 hover:text-white pointer-events-auto"
+                        : "max-w-[120px] opacity-100 px-3 mx-1 text-neutral-300 hover:text-white pointer-events-auto"
                     }`}
                   >
                     <span>{link.name}</span>
@@ -89,7 +89,7 @@ const Navbar = () => {
               <div className="hidden md:block">
                 <Button
                   size="default"
-                  className={`bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 shadow-lg shadow-purple-500/25 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)] rounded-full ${isScrolled ? "px-5 py-2 h-9 text-sm" : "px-7 py-3 h-11 text-base origin-right"}`}
+                  className={`bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 shadow-lg shadow-purple-500/25 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.25,1)] rounded-full ${isScrolled ? "px-5 py-2 h-9 text-sm" : "px-5 py-2 h-10 text-sm origin-right"}`}
                   onClick={() => handleNavClick("#contact")}
                 >
                   Começar Agora

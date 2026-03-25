@@ -9,6 +9,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import ScrollVelocity from "@/components/ScrollVelocity";
+import ChatBot from "@/components/ChatBot";
 
 const Index = () => {
   useScrollAnimation();
@@ -36,6 +37,7 @@ const Index = () => {
       <Benefits />
       <Contact />
       <Footer />
+      <ChatBot />
     </div>
   );
 };

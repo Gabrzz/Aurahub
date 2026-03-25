@@ -243,6 +243,13 @@
   display: flex; align-items: center; justify-content: center;
   text-decoration: none;
   animation: wapp-pop .6s ease 1s both, wapp-pulse 2.5s ease-in-out 2s infinite;
-  transition: transform .2s, background .2s;
+  transition: transform .2s, background .2s, opacity .3s;
 }
 .wappFab:hover { transform: scale(1.1); background: #1da851; }
+
+/* Hide WhatsApp when ChatBot is open */
+:global(body.chat-open) .wappFab {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: scale(0.8) !important;
+}
