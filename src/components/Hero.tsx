@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import auraLogo from "@/assets/aura-logo2.png";
@@ -6,7 +7,16 @@ import TextType from '@/components/ui/typeText';
 import FloatingLines from '@/components/ui/FloatingLines';
 
 
+const subheadlines = [
+  "Não é sobre tecnologia. É sobre você parar de fazer no braço o que uma máquina faz em segundos.",
+  "Seu time é bom demais pra ficar copiando dado de um sistema e colando em outro. A gente resolve isso.",
+  "Criamos soluções de I.A. sob medida para o dia a dia da sua empresa, do atendimento ao financeiro.",
+  "Toda empresa tem gargalos. A nossa especialidade é desentupir os seus."
+];
+
 const Hero = () => {
+  const [randomSubheadline] = useState(() => subheadlines[Math.floor(Math.random() * subheadlines.length)]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
      
@@ -48,9 +58,9 @@ const Hero = () => {
           <span className="text-foreground "><br />o seu negócio</span>
         </h1>
 
-        {/* Subheadline */}
+        {/* Subheadline Aleatória */}
         <p className="text-xl md:text-xl text-neutral-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-          Não vendemos ferramentas. Construímos soluções de inteligência artificial que cabem na realidade da sua empresa — e crescem com ela.
+          {randomSubheadline}
         </p>
 
         {/* CTA Buttons */}
@@ -69,7 +79,7 @@ const Hero = () => {
             variant="outline" 
             size="lg" 
             className="btn-secondary text-lg px-8 py-4 h-auto"
-            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Ver como funciona
           </Button>
